@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Poppins, Josefin_Sans } from "next/font/google";
+import { ThemeSwitcher } from "./utilis/ThemeSwitcher";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,9 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:to-black duration:300 dark:from-gray-900`}>
+      <body className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:to-black duration:300 dark:from-gray-900 relative`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
+        <ThemeSwitcher />
         </ThemeProvider>
       </body>
     </html>
