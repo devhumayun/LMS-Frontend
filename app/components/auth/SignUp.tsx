@@ -30,7 +30,7 @@ export const SignUp: FC<Props> = ({ setOpen, setRoute }) => {
     initialValues: { email: "", password: "", name: "" },
     validationSchema: schema,
     onSubmit: async ({ email, password, name }) => {
-      console.log("hi");
+      setRoute("Verification")
     },
   });
 
@@ -40,7 +40,7 @@ export const SignUp: FC<Props> = ({ setOpen, setRoute }) => {
     <>
       <div>
         <div className="relative flex justify-between">
-          <h2 className={`${styles.title}`}> Login with Elearning </h2>
+          <h2 className={`${styles.title}`}> Join to Elearning </h2>
           <span
             className={`${styles.closeBtn} top-[6px]`}
             onClick={() => setOpen(false)}
@@ -48,7 +48,7 @@ export const SignUp: FC<Props> = ({ setOpen, setRoute }) => {
             <AiOutlineClose />
           </span>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className={`${styles.label}`} htmlFor="name">
               Enter Name
@@ -115,10 +115,7 @@ export const SignUp: FC<Props> = ({ setOpen, setRoute }) => {
             )}
           </div>
           <div className="mb-4">
-            <button className={`${styles.submitBtn}`} type="submit">
-              {" "}
-              Login{" "}
-            </button>
+           <input type="submit" value="Sign Up" className={`${styles.submitBtn}`} />
           </div>
           <div className="py-2 text-center">
             <span className="text-center text-black dark:text-white">
@@ -132,13 +129,13 @@ export const SignUp: FC<Props> = ({ setOpen, setRoute }) => {
           </div>
           <div className="mt-5 mb-3 text-center">
             <span className="text-center text-black dark:text-white">
-              Have an account?
+             Already have an account?
               <span
                 className="text-blue-500 font-semibold font-Poppins cursor-pointer"
                 onClick={() => setRoute("Login")}
               >
                 {" "}
-                Login{" "}
+                Sign in{" "}
               </span>
             </span>
           </div>

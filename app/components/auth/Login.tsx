@@ -29,7 +29,7 @@ export const Login: FC<Props> = ({ setOpen, setRoute }) => {
     initialValues: { email: "", password: "" },
     validationSchema: schema,
     onSubmit: async ({ email, password }) => {
-      console.log("hi");
+      console.log(email,password);
     },
   });
 
@@ -47,7 +47,7 @@ export const Login: FC<Props> = ({ setOpen, setRoute }) => {
             <AiOutlineClose />
           </span>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className={`${styles.label}`} htmlFor="email">
               Enter email
@@ -96,10 +96,7 @@ export const Login: FC<Props> = ({ setOpen, setRoute }) => {
             )}
           </div>
           <div className="mb-4">
-            <button className={`${styles.submitBtn}`} type="submit">
-              {" "}
-              Login{" "}
-            </button>
+            <input type="submit" value="Login" className={`${styles.submitBtn}`} />
           </div>
           <div className="py-2 text-center">
             <span className="text-center text-black dark:text-white">

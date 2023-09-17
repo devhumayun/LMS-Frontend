@@ -8,6 +8,7 @@ import { BiUserCircle } from 'react-icons/bi';
 import { CustomModal } from "../utilis/CustomModal";
 import {Login} from './auth/Login'
 import {SignUp} from './auth/SignUp'
+import {Verification} from './auth/Verification'
 import { styles } from "../styles/style";
 
 type Props = {
@@ -132,6 +133,21 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem, route, setRoute }
               activeItem={activeItem}
               setRoute={setRoute}
               component={SignUp}
+            />
+          )}
+            </>
+          )
+        }
+        {
+          route === "Verification" && (
+            <>
+              {open && (
+              <CustomModal 
+              open={open}
+              setOpen={setOpen}
+              activeItem={activeItem}
+              setRoute={setRoute}
+              component={Verification}
             />
           )}
             </>
