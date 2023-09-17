@@ -5,14 +5,20 @@ import { NaveItem } from "../utilis/NaveItem";
 import { ThemeSwitcher } from "../utilis/ThemeSwitcher";
 import { AiOutlineAlignRight, AiOutlineClose } from 'react-icons/ai';
 import { BiUserCircle } from 'react-icons/bi';
+import { CustomModal } from "../utilis/CustomModal";
+import {Login} from './auth/Login'
+import {SignUp} from './auth/SignUp'
+import { styles } from "../styles/style";
 
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void;
   activeItem: number;
+  route: string;
+  setRoute: (route: string) => void;
 };
 
-export const Header: FC<Props> = ({ open, setOpen, activeItem }) => {
+export const Header: FC<Props> = ({ open, setOpen, activeItem, route, setRoute }) => {
   const [active, setActive] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
 
@@ -55,7 +61,7 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem }) => {
                     <div className="hidden 800px:block">
                       <BiUserCircle 
                         size={23}
-                        className="text-black dark:text-white"
+                        className="text-black dark:text-white cursor-pointer"
                         onClick={() => setOpen(true)}
                       />
                     </div>
@@ -81,7 +87,7 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem }) => {
                 <div className="w-[70%] fixed top-0 right-0 z-[9999] h-screen bg-white dark:bg-slate-900 dark:bg-opacity-90">
                   <div className="mt-8 text-center relative">
                     <span className="font-semibold font-Poppins text-2xl text-black dark:text-white"> Elearning </span>
-                    <span className="absolute right-[5%] top-[-8px] w-10 h-10 rounded-full bg-[#8F91D1] dark:bg-[#191D6E] flex justify-center items-center text-lg shadow-xl cursor-pointer "
+                    <span className={`${styles.closeBtn}`}
                       onClick={() => setOpenSideBar(false)}
                     > <AiOutlineClose /> </span>
                   </div>
@@ -101,6 +107,36 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem }) => {
             )
           }
         </div>
+        {
+          route === "Login" && (
+            <>
+              {open && (
+              <CustomModal 
+              open={open}
+              setOpen={setOpen}
+              activeItem={activeItem}
+              setRoute={setRoute}
+              component={Login}
+            />
+          )}
+            </>
+          )
+        }
+        {
+          route === "Sign-Up" && (
+            <>
+              {open && (
+              <CustomModal 
+              open={open}
+              setOpen={setOpen}
+              activeItem={activeItem}
+              setRoute={setRoute}
+              component={SignUp}
+            />
+          )}
+            </>
+          )
+        }
       </div>
     </>
   );
