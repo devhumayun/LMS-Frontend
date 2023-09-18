@@ -1,10 +1,12 @@
-"use client"
+"use client";
 import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Poppins, Josefin_Sans } from "next/font/google";
 import { ThemeSwitcher } from "./utilis/ThemeSwitcher";
 import { Toaster } from "react-hot-toast";
+import { Providers } from "./Provider";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,12 +27,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:to-black duration:300 dark:from-gray-900 relative`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        {children}
-        <Toaster position="top-center" reverseOrder={false} />
-        <ThemeSwitcher />
-        </ThemeProvider>
+      <body
+        className={`${poppins.variable} ${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:to-black duration:300 dark:from-gray-900 relative`}
+      >
+        <Providers>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+            <Toaster position="top-center" reverseOrder={false} />
+            <ThemeSwitcher />
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
