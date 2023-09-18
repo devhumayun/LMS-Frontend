@@ -10,6 +10,9 @@ import {Login} from './auth/Login'
 import {SignUp} from './auth/SignUp'
 import {Verification} from './auth/Verification'
 import { styles } from "../styles/style";
+import { useSelector } from "react-redux";
+import Image from "next/image";
+import avater from '../../public/assests/avatar.png'
 
 type Props = {
   open: boolean;
@@ -22,7 +25,7 @@ type Props = {
 export const Header: FC<Props> = ({ open, setOpen, activeItem, route, setRoute }) => {
   const [active, setActive] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
-
+  const {user} = useSelector((state:any) => state.auth)
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 85) {
@@ -60,11 +63,26 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem, route, setRoute }
                     isMobile={false}
                    />
                     <div className="hidden 800px:block">
-                      <BiUserCircle 
+                      {
+                        user ? 
+                        (
+                          <Link href={"/profile"}>
+                            <Image 
+                              src={user.avatar? user.avatar : avater}
+                              alt="Profile"
+                              className="w-[30px] h-[30px] rounded-full"
+                            />
+                          </Link>
+                        )
+                        :
+                        (
+                        <BiUserCircle 
                         size={23}
                         className="text-black dark:text-white cursor-pointer"
                         onClick={() => setOpen(true)}
-                      />
+                        />
+                        )
+                      }
                     </div>
                    {/* <ThemeSwitcher /> */}
                    {/* Only for mobile */}
