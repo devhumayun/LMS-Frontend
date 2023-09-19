@@ -13,6 +13,7 @@ import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import toast from "react-hot-toast";
+import {signIn} from 'next-auth/react'
 
 type Props = {
   setRoute: (route: string) => void;
@@ -121,8 +122,8 @@ export const Login: FC<Props> = ({ setOpen, setRoute }) => {
               Connect with us by{" "}
             </span>
             <div className="flex justify-center items-center gap-2 mt-3 h-10 w-full">
-              <FcGoogle size={23} className={`${styles.socialIcon}`} />
-              <AiFillGithub size={23} className={`${styles.socialIcon} `} />
+              <FcGoogle onClick={() => signIn("google")} size={23} className={`${styles.socialIcon}`} />
+              <AiFillGithub onClick={() => signIn("github")} size={23} className={`${styles.socialIcon} `} />
             </div>
           </div>
           <div className="mt-5 mb-3 text-center">

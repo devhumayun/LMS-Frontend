@@ -66,13 +66,13 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem, route, setRoute }
                       {
                         user ? 
                         (
-                          <Link href={"/profile"}>
+                          <>
                             <Image 
                               src={user.avatar? user.avatar : avater}
                               alt="Profile"
-                              className="w-[30px] h-[30px] rounded-full"
+                              className="w-[30px] h-[30px] rounded-full cursor-pointer"
                             />
-                          </Link>
+                          </>
                         )
                         :
                         (
