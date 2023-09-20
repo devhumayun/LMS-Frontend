@@ -9,7 +9,7 @@ type sideBarProps = {
   user: any;
   active: number;
   setActive: (active: number) => void;
-  avatar: string | null;
+  avater: string | null;
   logOutHandler: any;
 };
 
@@ -17,7 +17,7 @@ export const ProfileSideBar: FC<sideBarProps> = ({
   user,
   active,
   setActive,
-  avatar,
+  avater,
   logOutHandler,
 }) => {
   const logoutItem = () => {
@@ -34,7 +34,7 @@ export const ProfileSideBar: FC<sideBarProps> = ({
         onClick={() => setActive(1)}
       >
         <Image
-          src={user.avatar || avatar ? user.avatar || avatar : avatarDefault}
+          src={user.avater || avater ? user.avater.url || avater : avatarDefault}
           alt=""
           className="w-[40px] h-[40px] rounded-full"
         />

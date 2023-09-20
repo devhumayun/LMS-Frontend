@@ -15,7 +15,7 @@ type Props = {
 export const Profile: FC<Props> = ({ user }) => {
   const [scroll, setScroll] = useState(false);
   const [active, setActive] = useState(1);
-  const [avatar, setAvatar] = useState(null);
+  const [avater, setAvater] = useState(null);
   const [logout, setLogout] = useState(false);
 
   const {} = useLogOutQuery(undefined, {
@@ -50,7 +50,7 @@ export const Profile: FC<Props> = ({ user }) => {
             user={user}
             active={active}
             setActive={setActive}
-            avatar={avatar}
+            avatar={avater}
             logOutHandler={logOutHandler}
           />
           {/* <SideBarProfile
@@ -63,7 +63,7 @@ export const Profile: FC<Props> = ({ user }) => {
         </div>
         {active === 1 && (
           <div className="w-full h-full bg-transparent mt-[80px]">
-            <ProfileInfo user={user} avatar={avatar} />
+            <ProfileInfo user={user} avatar={avater} />
           </div>
         )}
         {active === 2 && (
