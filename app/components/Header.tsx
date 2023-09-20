@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { NaveItem } from "../utilis/NaveItem";
 import { ThemeSwitcher } from "../utilis/ThemeSwitcher";
 import { AiOutlineAlignRight, AiOutlineClose } from 'react-icons/ai';
@@ -13,6 +13,8 @@ import { styles } from "../styles/style";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import avater from '../../public/assests/avatar.png'
+import { useLogoutQuery } from "@/redux/features/auth/authApi";
+import { useSession } from "next-auth/react";
 
 type Props = {
   open: boolean;
@@ -26,6 +28,18 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem, route, setRoute }
   const [active, setActive] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
   const {user} = useSelector((state:any) => state.auth)
+  const {data} = useSession()
+  // const [logout, setLogout] = useState(false)
+  // const {} = useLogoutQuery(undefined,{
+  //   skip: !logout ? true : false
+  // })
+
+  // useEffect(() => {
+  //   if(data === null){
+  //     setLogout(true)
+  //   }
+  // }, [data])
+  
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 85) {
@@ -66,13 +80,13 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem, route, setRoute }
                       {
                         user ? 
                         (
-                          <>
+                          <Link href={"/profile"}>
                             <Image 
                               src={user.avatar? user.avatar : avater}
                               alt="Profile"
                               className="w-[30px] h-[30px] rounded-full cursor-pointer"
                             />
-                          </>
+                          </Link>
                         )
                         :
                         (

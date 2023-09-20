@@ -5,7 +5,7 @@
     border-radius: 50%;
     width: 45px;
     height: 45px;
-    animation: loaderAnimation 1s linear infinite
+    animation: loaderAnimation 2s linear infinite
 }
 
 @keyframes loaderAnimation {
