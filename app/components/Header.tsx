@@ -13,7 +13,6 @@ import { styles } from "../styles/style";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import avater from '../../public/assests/avatar.png'
-import { useLogoutQuery } from "@/redux/features/auth/authApi";
 import { useSession } from "next-auth/react";
 
 type Props = {
@@ -66,7 +65,7 @@ export const Header: FC<Props> = ({ open, setOpen, activeItem, route, setRoute }
               : "w-full border-b dark:border-[#fffff1c] h-[80px] z-[80] dark:shahow "
           }`}
         >
-           <div className="w-[95%] 800px:w-[90%] 800px:px-5 h-[800px] m-auto">
+           <div className="w-[95%] 800px:w-[90%] 800px:px-5 m-auto">
             <div className="w-full h-[80px] flex items-center justify-between">
                 <div className="flex items-center">
                     <Link className={`text-[30px] font-Poppins text-black dark:text-white font-bold`} href={"/"}> Elearning </Link>
