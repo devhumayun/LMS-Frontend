@@ -4,6 +4,7 @@ import avatarDefault from "../../../public/assests/avatar.png";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlineLogout } from "react-icons/ai";
 import { SiCoursera } from "react-icons/si";
+import { RiAdminLine } from "react-icons/ri";
 
 type sideBarProps = {
   user: any;
@@ -34,11 +35,13 @@ export const ProfileSideBar: FC<sideBarProps> = ({
         onClick={() => setActive(1)}
       >
         <Image
-          src={user.avater || avater ? user.avater.url || avater : avatarDefault}
+          src={
+            user.avater || avater ? user.avater.url || avater : avatarDefault
+          }
           alt=""
           className="w-[40px] h-[40px] rounded-full"
         />
-        <h4 className="text-[18px] font-Poppins text-black dark:text-white">
+        <h4 className="text-[18px] font-Poppins text-black dark:text-white 800px:block hidden">
           {" "}
           My Account{" "}
         </h4>
@@ -50,7 +53,7 @@ export const ProfileSideBar: FC<sideBarProps> = ({
         onClick={() => setActive(2)}
       >
         <RiLockPasswordLine size={20} className="dark:text-white text-black" />
-        <h4 className="text-[16px] font-Poppins text-black dark:text-white">
+        <h4 className="text-[16px] font-Poppins text-black dark:text-white 800px:block hidden">
           {" "}
           Change Password{" "}
         </h4>
@@ -62,11 +65,25 @@ export const ProfileSideBar: FC<sideBarProps> = ({
         onClick={() => setActive(3)}
       >
         <SiCoursera size={20} className="dark:text-white text-black" />
-        <h4 className="text-[16px] font-Poppins text-black dark:text-white">
+        <h4 className="text-[16px] font-Poppins text-black dark:text-white 800px:block hidden">
           {" "}
           Enrolled Courses{" "}
         </h4>
       </div>
+      {user?.role === "admin" && (
+        <div
+          className={`w-full flex items-center gap-3 px-5 py-4 cursor-pointer ${
+            active === 8 ? "dark:bg-[#1E293B] bg-slate-100" : "bg-transparent"
+          }`}
+          onClick={() => setActive(8)}
+        >
+          <RiAdminLine size={20} className="dark:text-white text-black" />
+          <h4 className="text-[16px] font-Poppins text-black dark:text-white 800px:block hidden">
+            {" "}
+            Admin Dashboard
+          </h4>
+        </div>
+      )}
       <div
         className={`w-full flex items-center gap-3 px-5 py-4 cursor-pointer ${
           active === 4 ? "dark:bg-[#1E293B] bg-slate-100" : "bg-transparent"
@@ -74,7 +91,7 @@ export const ProfileSideBar: FC<sideBarProps> = ({
         onClick={logoutItem}
       >
         <AiOutlineLogout size={20} className="dark:text-white text-black" />
-        <h4 className="text-[16px] font-Poppins text-black dark:text-white">
+        <h4 className="text-[16px] font-Poppins text-black dark:text-white 800px:block hidden">
           {" "}
           Log Out{" "}
         </h4>
